@@ -1,0 +1,99 @@
+/* html, body {
+    height: 100%;
+  }
+  
+  body {
+    background-color: #A9C9FF;
+    background-image: linear-gradient(180deg, #162e56 0%, #8c3a75 100%);
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+
+  /* styling for the card */
+  .card {
+    background: #fff;
+    border-radius: 2rem;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3), /* Outer shadow for depth */
+    inset -5px -5px 10px rgba(255, 255, 255, 0.5), /* Inner lighter shadow */
+    inset 5px 5px 10px rgba(0, 0, 0, 0.3); /* Inner darker shadow */
+    overflow: hidden;
+    display: flex; 
+    /* flex-direction: column; */
+  }
+  /* image positioning */
+  .card__img {
+    position: relative;
+    height: 30rem;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  /* for text positioning */
+  .card_text{
+    text-align: center;
+   display: flex;
+   padding: 3rem;
+  }
+  /* breakpoints for the card, responsive behavior */
+  @media screen and (max-width: 768px) {
+    .card__img {
+      height: 20rem; 
+      width: 20rem; 
+    }
+  
+    .card__img > img {
+      width: 6rem; 
+    }
+  
+    .card_text {
+      padding: 1rem; 
+      font-size: 1rem; 
+    }
+  }
+/* styles for an image */
+  /* .card__img > img {
+    width: 10rem;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+  } */
+  /* grid for the dots */
+  .card__gridEffect {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+  .card__gridEffectTile {
+    position: relative;
+  }
+  /* dots before */
+  .card__gridEffectTile:before {
+    content: "";
+    color: #A9C9FF;
+    opacity: .5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 0.3rem;
+    width: 0.3rem;
+    border-radius: 50%;
+    background: #A9C9FF;
+    transition: 500ms linear all;
+    
+  }
+  /* hover effect of the dots */
+  .card__gridEffectTile:hover:before {
+    height: 3rem;
+    width: 3rem;
+    transition: 70ms linear all;
+    opacity: 1;
+  }
+  

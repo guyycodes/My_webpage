@@ -1,0 +1,322 @@
+/*************** Managment of the background cloroed screen area on top of everything ****************/
+/* pushes the video to the center of the screen along the y-axis an sets a background behind it */
+body {
+  background:linear-gradient(0deg,#8fbc8f 15%, #deb887 70%) !important;
+  /* background-color: rgba(230, 19, 19, 0.5); manages the background color of the body */
+  height: 100vh;
+  font: 400 16px "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+} 
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*************** Managment of the area that is sitting on top of the video, and vars ****************/
+.wrapper {
+    /******* vars ******/
+    --color: #1F242D;
+    --color-invert: #93f2ff;
+    --clip-path: circle(15px at left);
+    --clip-path-hover: circle(70px at left);
+    --clip-path-clicked: circle(250vw);
+    --clip-path-custom: url(#custom-clip-path)  ;
+    --duration: .4s;
+    --timing-function: ease;
+    /*^^^^^^^^^^^^^^^^^*/
+    /* centers the video and sets up variables */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 2;
+}
+
+/* Breakpoint at 769px */
+@media screen and (max-width: 770px) {
+  .wrapper {
+    /* min-width: 100vw;
+    min-height: 100vh; */
+    /* transform: translate(0%, 0%); */
+  }
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*************** Managment of the video's container and the video ****************/
+/* This is the container the viedo is inside of */
+.wrapper .video {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;    /* centers the white video cover */
+  margin-left: 15px;      /* set spacing between the checkbox and the circle */
+  clip-path: var(--clip-path); /* sets the circles size prior to it being hovered , this is also restricting the visible area of the video*/
+  transition: clip-path var(--duration) var(--timing-function); /* defines how and what the transition is applied to */
+}
+
+/* makes the video scale down to center of window */
+.wrapper .video video { 
+  position: fixed;    /* fixes the videos position in place */
+  background: #c4cbde;
+  top: 50%;
+  left: 50%;
+  width: 105vw; /* Sets the width to 100% of the viewport width */
+  height: 105vh; /* Sets the height to 100% of the viewport height */
+  object-fit: cover;  
+  /* move the video from the bottom right back to the center, underneith the white wrapper */
+  transform: translate(-50%, -50%); 
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*************** Managment of the video's container and the video ****************/
+/* manages the position and content of the "Watch the video text before and after */
+.wrapper .text > span::before, .wrapper .text > span::after { 
+  content: attr(data-text);
+}
+
+/* manages the behavior of the "Watch the video text" */
+.wrapper .text {
+  /* this effects positioning of the text with respect to the wrapper in its ::before state*/
+  position: relative;       
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  opacity: var(--opacity, 1);
+  transition: opacity 0.3s 
+  var(--timing-function) 0.2s;
+  margin-bottom: 1%;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*************** Managment of the checkbox ****************/
+/* manages the visibility of the checkbox */
+.wrapper input {
+  width: 200px;
+  height: 40px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  border-radius: 40px;
+  outline: none;
+  z-index: 2;
+  appearance: none;
+  cursor: pointer;
+  border: 1px solid;
+}
+
+.wrapper input:focus {
+  outline: 1;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*** Manages the text underline running beneith "Watch the video"****/
+/* creates the underline and positions it */
+.wrapper .text::before, .wrapper .text::after {
+  content: "";    /* sets the content of the element to nothing so we get just a line */
+  position: absolute; /* causes the underline effect */
+  bottom: 0; /* cuses the line to be underneith the text */
+  left: -1px; /* offsets the portion of the line inside the circle, so it fits perfectly inside the circle */
+  right: 25px; /* manages the portion of the text underline inside of the circle */
+  height: 0;
+}
+
+/* (related elements): manages the behavior of the underline, beneith the text, before checkbox is checked, and when the checkbox is hovered*/
+.wrapper .text::before {
+  box-shadow: 26px -1px 0px 1px #F2994A;
+  right: var(--r, 100%);
+  opacity: var(--opacity, 0);
+  transition: right 0.5s ease-in, opacity 0.2s linear;
+}
+
+/*manages the underline when the checkbox is hovered */
+/* input element hovered?? target its sibling class .text */
+.wrapper input:hover ~ .text::before {
+  --r: 25px;
+  --opacity: 1;
+}
+
+/* Sets the portion of the text underline, inside of the circle to be inside the clip path thus changing the color*/
+/* input element hovered?? target its sibling class .text */
+.wrapper input:hover ~ .text::after {
+  clip-path: var(--clip-path-hover);
+}
+
+/* manages the underline, beneith the text after checkbox is checked*/
+.wrapper .text::after {
+  box-shadow: 26px 0 0 1px var(--color-invert); /* box shadow give the appearance that he underline is changing color */
+  clip-path: var(--clip-path);
+  transition: clip-path var(--duration) var(--timing-function);
+}
+
+/* controls location of span after */
+/*wrapper input is checked, do this to the text class after??*/
+.wrapper input:checked ~ .text::after {
+  clip-path: var(--clip-path-clicked);
+  
+}
+
+/* manages the hover over the checkbox causes the circle to grow to 70px */
+/* input element thats a child of wrapper hovered?? target its sibling class .video */
+.wrapper input:hover ~ .video {
+  clip-path: var(--clip-path-hover);
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*************** Span text Managment "Watch the video" ****************/
+/* causes the "Watch the video" text to dissapear on the right side, in a 70px circle*/
+.wrapper input:hover ~ .text > span::after {
+  clip-path: var(--clip-path-hover);
+}
+
+/* sets the text "Watch the video" to a deep black */
+.wrapper .text > span::before {
+  color: var(--color);
+}
+
+/* Manages the white/black text color transistion as the circle animation changes ALSO ensure there are not duplicated data-text items due to the positioning */
+.wrapper .text > span::after {
+  color: var(--color-invert);
+  clip-path: var(--clip-path);
+  transition: clip-path var(--duration) var(--timing-function);
+  position: absolute;
+  left: 0;
+}
+
+/* manages the span after input is checked and sets the clip path */
+/*wrapper input checked ? class text's child of span should do this after*/
+.wrapper input:checked ~ .text > span::after {
+  clip-path: var(--clip-path-clicked);
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*************** Managment of checkbox state ****************/
+/* when the checkbox is checked, expands the <input> element which is the checkbox to 100% of its container*/
+.wrapper input:checked { /* toggle open and close the wrapper */
+  /* width: 100%; */
+  /* height: 100%; */
+  border-radius: 25px;
+  transform: translateY(calc(100vh - 118.5vh)) translateX(calc(100vw - 111.5vw));
+  z-index: 4;
+} /*controls location of the click input*/
+
+/* manages the clicked state of the checkbox, which reveals the whole video */
+.wrapper input:checked ~ .video {
+  clip-path: var(--clip-path-clicked);
+}
+
+/* hides the text once the checkbox is checked */
+.wrapper input:checked ~ .text {
+  --opacity: 1;
+  transform: translateY(calc(100vh - 118vh)) translateX(calc(100vw - 112vw));
+  transition: opacity 0.3s var(--timing-function), transform 0.350s var(--timing-function);
+  z-index: 3;
+  color: aqua;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*************** Managment of svg ****************/
+.svgMask .video{
+  height: 100%;
+  clip-path: var(--clip-path-custom);
+}
+
+.svgMask{
+  margin-top: 10%;
+  flex: 1;
+  align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 100%
+}
+/* positions the svg over the dotsCard */
+.customSvg {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  height: 1%; /* sets svg heigh to minimal to acces layers below on hover */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  right: 8%;
+}
+
+.mainContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.lowerContainer {
+  /* display: flex; */
+  width: 50vw;
+  /* margin: .5% auto;  */
+}
+/* controls positioning of the box which is the container for the box the underlay content is inside of */
+.underlay {
+  position: absolute; 
+  top: -20vh;
+  left: 0vw;
+  right: 0%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between;  */
+  /* align-items: center;   */
+  /* visibility: hidden;  */
+}
+/* controls positioning of the box the underlay content is inside of */
+
+.wrapper input:checked ~ .underlay {
+  visibility: visible;
+}
+@media screen and (max-width: 991px) {
+  .underlay {
+    top: -15vh;
+    left: 0vw;
+    
+  }
+} 
+@media screen and (max-width: 768px) {
+  .underlayContent {
+    flex-direction: column;
+  }
+  .underlay {
+    top: -20vh;
+    left: 0vw;
+    left: -3vw;
+  }
+} 
+@media screen and (max-width: 479px) {
+  .underlay {
+    top: -17vh;
+    left: 0vw;
+    left: -32vw;
+  }
+} 
+@media screen and (max-width: 400px) {
+  .underlay {
+    top: -15vh;
+    left: 0vw;
+    left: -25vw;
+  }
+} 
+@media screen and (max-width: 320px) {
+  .underlay {
+    top: -15vh;
+    left: 0vw;
+    left: -17vw;
+  }
+}
+@media screen and (max-width: 280px) {
+  .underlay {
+    top: -15vh;
+    left: 0vw;
+    left: -5vw;
+  }
+}

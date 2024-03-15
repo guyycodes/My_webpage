@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { VideoButton } from './assets/components';
+import { VideoButton } from './views/home';
 
 
 function App() {

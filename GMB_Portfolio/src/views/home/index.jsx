@@ -1,12 +1,12 @@
-import { DotsCard } from './landingPage/DotCard/dotCard.jsx';
-import { LandingUnderlay } from './landingPage/underlay/LandingUnderlay.jsx';
-import { Morph } from './landingPage/textMorph/textMorph.jsx';
+import { DotsCard } from '../../components/DotCard/dotCard.jsx';
+import { LandingUnderlay } from '../underlay/LandingUnderlay.jsx';
+import { Morph } from '../../components/TextMorph/textMorph.jsx';
 import React, { useState, useEffect } from 'react';
 //VideoButton.module.css. This change signifies that the styles in this file are a module and should be treated as such by the build tool
 import styles from './VideoButton.module.css';
-import { svgLarge } from '../utils/svgs/svgLarge.jsx'
-import { svgSmall } from '../utils/svgs/svgSmall.jsx';
-import { svgXsmall } from '../utils/svgs/svgXsmall.jsx';
+import { svgLarge } from '../../../public/SVG/svgLarge.jsx'
+import { svgSmall } from '../../../public/SVG/svgSmall.jsx';
+import { svgXsmall } from '../../../public/SVG/svgXsmall.jsx';
 import { Box, Input } from '@chakra-ui/react';
 
 export const VideoButton = () => {
@@ -64,7 +64,7 @@ export const VideoButton = () => {
                 onChange={handleCheckboxChange}
               />
               <Box className={styles.video}>
-              <video 
+            <video 
                 loop={true} 
                 muted={true} 
                 autoPlay={true}
@@ -86,7 +86,7 @@ export const VideoButton = () => {
               <Box className={styles.underlay}> 
               {/* Manages the content on the bottom of the screen */}
                 <Box className={styles.underlayContent}>
-                  {isChecked && <LandingUnderlay isCheckboxChecked={isChecked} isMobileView={isMobileView} />}
+                  {isChecked && <LandingUnderlay isCheckboxChecked={isChecked} input={isChecked} isMobileView={isMobileView} />}
                 </Box>
               </Box>
             </Box>

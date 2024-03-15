@@ -1,6 +1,6 @@
 import React from 'react';
 import cardStyles from './dotCard.module.css'
-import { Morph } from '../textMorph/textMorph';
+import { Morph } from '../TextMorph/textMorph';
 
 
 export function DotsCard({content, content2}) {

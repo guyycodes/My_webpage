@@ -61,10 +61,10 @@ body {
 .wrapper .video video { 
   position: fixed;    /* fixes the videos position in place */
   background: #c4cbde;
-  top: 50%;
+  top: 20%;
   left: 50%;
   width: 105vw; /* Sets the width to 100% of the viewport width */
-  height: 105vh; /* Sets the height to 100% of the viewport height */
+  height: calc(51%); /* Sets the height to 100% of the viewport height */
   object-fit: cover;  
   /* move the video from the bottom right back to the center, underneith the white wrapper */
   transform: translate(-50%, -50%); 

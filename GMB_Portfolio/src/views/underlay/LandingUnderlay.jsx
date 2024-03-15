@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 import { Navbar } from '../../components/Navbar/navbar'
 import { Hero } from '../../components/Hero/hero'
+import { CardNavbar } from '../../components/TabNav/cardNavigation';
 import { Footer } from '../../components/Footer/Footer';
 
 export const LandingUnderlay = ({ isCheckboxChecked, input }) => {
@@ -24,31 +25,52 @@ export const LandingUnderlay = ({ isCheckboxChecked, input }) => {
     }, []);
 
     const footerTransform = {
-        large: { lg: "translateX(calc(4rem - 27.5vw))" },
-        med_Large: { md_lg: "translateX(calc(3.5rem - 25vw))" },
+        large: { lg: "translateX(calc(0rem - 21vw))" },
+        med_Large: { md_lg: "translateX(calc(0rem - 25vw))" },
         medium: { md: "translateX(calc(1rem - 20vw))"  },
-        med_small: { md_sm: "translateX(calc(1rem - 18vw))"  },
-        small: { sm: "translateX(calc(1.5rem + 15vw))" },
-        x_small: { xs: "translateX(calc(1rem + 17vw))" },
-        custom: { cust: "translateX(calc(4.5rem - 25vw))" },   
+        med_small: { md_sm: "translateX(calc(0rem - 18vw))"  },
+        xx_small: { xs: "translateX(calc(0rem + 1vw))" },
+        Samsung: { sm: "translateX(calc(0rem - 22vw))" },
+        Iphone: { cust: "translateX(calc(1rem - 0vw))" },      
     };
+
+    const heroTransform = {
+      x_small: { xs: "translateX(calc(0rem + 5vw)) translateY(calc(0rem - 9.5vh))" },
+      customHero: { cust: "translateX(calc(0rem + 5vw)) translateY(calc(0rem - 9.5vh))" },
+      SamsungHero: { sm: "translateX(calc(0rem + 5vw)) translateY(calc(0rem - 9.5vh))" },
+      IphoneHero: { cust: "translateX(calc(0rem + 19vw)) translateY(calc(0rem - 9.5vh))" },      
+  };
+      // transforms pointer movement based on screen size
+      const transformObj = screenSize > 1100 ? heroTransform.customHero : 
+                                screenSize > 1000 ? heroTransform.customHero :
+                                screenSize > 900 ? heroTransform.customHero : 
+                                screenSize > 800 ? heroTransform.customHero :
+                                screenSize > 700 ? heroTransform.customHero : 
+                                screenSize > 600 ? heroTransform.customHero :
+                                screenSize > 500 ? heroTransform.customHero : 
+                                screenSize >= 480 ? heroTransform.SamsungHero :
+                                screenSize > 400 ? heroTransform.IphoneHero :
+                                screenSize > 300 ? heroTransform.IphoneHero : 
+                                screenSize > 200 ? heroTransform.x_small : 
+                                heroTransform.x_small;
     
     // transforms pointer movement based on screen size
     const currentTransformObj = screenSize > 1100 ? footerTransform.large : 
                              screenSize > 1000 ? footerTransform.large :
-                             screenSize > 900 ? footerTransform.custom : 
+                             screenSize > 900 ? footerTransform.med_Large : 
                              screenSize > 800 ? footerTransform.med_Large :
                              screenSize > 700 ? footerTransform.medium : 
                              screenSize > 600 ? footerTransform.medium :
                              screenSize > 500 ? footerTransform.med_small : 
-                             screenSize >= 480 ? footerTransform.med_small :
-                             screenSize > 400 ? footerTransform.small :
-                             screenSize > 300 ? footerTransform.small : 
-                             screenSize > 200 ? footerTransform.x_small : 
-                             footerTransform.x_small;
+                             screenSize >= 480 ? footerTransform.Samsung :
+                             screenSize > 400 ? footerTransform.Iphone :
+                             screenSize > 300 ? footerTransform.Iphone : 
+                             screenSize >= 280 ? "translateX(calc(0rem + 10vw))" : 
+                             footerTransform.xx_small;
 
      // Extract the CSS transform value from the selected object
   const footerTranslateValue = Object.values(currentTransformObj)[0];
+  const heroTranslateValue = Object.values(transformObj)[0];
 
 
     return (
@@ -64,17 +86,19 @@ export const LandingUnderlay = ({ isCheckboxChecked, input }) => {
             overflowY="auto" /* Allows content in this box to scroll */
             flex="1"
             position="relative" /* Necessary for accurate scrolling */
-            transform="translateX(calc(0rem + 5vw)) translateY(calc(0rem - 9.5vh))"
+            transform={heroTranslateValue}
             m={1}
+            overflow="visible"
           >
             {/* Main content goes here - Example: */}
             <Hero />
             {/* You can add more components that make up the main content of the page here. */}
             {/* This container will scroll if the content exceeds the screen height. */}
+            <CardNavbar />
           </Box>
     
           {/* Footer fixed to the bottom */}
-          <Box  bottom="0" transform={footerTranslateValue} width="105vw" zIndex="banner">
+          <Box  bottom="0" transform={footerTranslateValue} width="107vw" zIndex="banner">
             <Footer />
           </Box>
         </Box>

@@ -1,8 +1,7 @@
 import React from "react";
 import { Box, Image} from '@chakra-ui/react'
-import logo from '../../../public/images/me.png'
+import me from '../../../public/images/me.png'
 import pineCone from '../../../public/images/Ellipse4.png'
-import coniferousTree from '../../../public/images/Ellipse5.png'
 
 
 export const HeroImage = () => {
@@ -19,14 +18,16 @@ export const HeroImage = () => {
       left={{ base: 0, sm: 0, md: 0, lg: 0, xl:0 }}
       bottom={{ base: 0, sm: 2 }}
       top={{ base: 0, sm: 0, md: 0, lg: 0, xl:0 }}
+      
     >
        
       <Image
-          src={logo}
+          src={me}
           alt='Picture of me'
           boxSize={{ base: '100%', md: '70%'}}
           h="130%"
           objectFit="cover"
+          
       />
     <>
       <Box
@@ -51,13 +52,6 @@ export const HeroImage = () => {
         display={{ base: 'none', sm: "flex"}}
         zIndex={0}
       >
-         <Image
-            src={coniferousTree}
-            alt='coniferous tree'
-            boxSize={{ base: '80%', sm: '80%', md: '100%', lg: "100%"}}
-            h="auto"
-            objectFit="contain"
-          />
       </Box>
     </>
       

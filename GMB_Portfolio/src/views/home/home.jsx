@@ -49,7 +49,7 @@ export const VideoButton = () => {
           <Box className={styles.mainContentContainer}>
             <div className={styles.dotsCard}>
               {/* Svg positioning is controlled by VideoButton.module.css and the text position is controlled inside dotCard.css */}
-              <DotsCard content={isSmallScreen ? svgSmall() : isXSmallScreen ? svgXsmall() : svgLarge()} content2={<Morph isChecked={()=>{isChecked}}/>}/>
+             {!isChecked && <DotsCard content={isSmallScreen ? svgSmall() : isXSmallScreen ? svgXsmall() : svgLarge()} content2={<Morph isChecked={()=>{isChecked}}/>}/>} 
             </div>
             <Box className={styles.lowerContainer}>
             </Box>

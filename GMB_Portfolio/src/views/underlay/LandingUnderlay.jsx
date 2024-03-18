@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 import { Navbar } from '../../components/Navbar/navbar'
 import { Hero } from '../../components/Hero/hero'
-import { CardNavbar } from '../../components/TabNav/cardNavigation';
+import { BelowHeroContent } from '../../components/TabNav/BelowHero.jsx'
+import { ContactContainer } from '../../components/Cards/CardContainers/contact.jsx';
 import { Footer } from '../../components/Footer/Footer';
 
 export const LandingUnderlay = ({ isCheckboxChecked, input }) => {
@@ -55,7 +56,7 @@ export const LandingUnderlay = ({ isCheckboxChecked, input }) => {
                                 heroTransform.x_small;
     
     // transforms pointer movement based on screen size
-    const currentTransformObj = screenSize > 1100 ? footerTransform.large : 
+    const transformTheFooter = screenSize > 1100 ? footerTransform.large : 
                              screenSize > 1000 ? footerTransform.large :
                              screenSize > 900 ? footerTransform.med_Large : 
                              screenSize > 800 ? footerTransform.med_Large :
@@ -69,34 +70,31 @@ export const LandingUnderlay = ({ isCheckboxChecked, input }) => {
                              footerTransform.xx_small;
 
      // Extract the CSS transform value from the selected object
-  const footerTranslateValue = Object.values(currentTransformObj)[0];
+  const footerTranslateValue = Object.values(transformTheFooter)[0];
   const heroTranslateValue = Object.values(transformObj)[0];
 
 
     return (
-        <Box minHeight="100vh" display="flex" flexDirection="column">
+        <Box h='auto' display="flex" flexDirection="column">
           {/* Navbar fixed to the top */}
           <Box position="fixed" top="0" right="0" width="100%" zIndex="banner">
             <Navbar />
           </Box>
-    
           {/* Scrollable main content */}
           <Box /* Adjust top margin based on NavBar height */
-            mb={{ base: "calc(4rem + 10vh)", md: "calc(4rem + 15vh)" }} /* Dynamically calculated based on Footer height and additional space */
-            overflowY="auto" /* Allows content in this box to scroll */
-            flex="1"
+            mb='auto' /* Dynamically calculated based on Footer height and additional space */
+            overflowY="auto" /* Allows content to scroll */
             position="relative" /* Necessary for accurate scrolling */
             transform={heroTranslateValue}
-            m={1}
             overflow="visible"
           >
-            {/* Main content goes here - Example: */}
             <Hero />
-            {/* You can add more components that make up the main content of the page here. */}
-            {/* This container will scroll if the content exceeds the screen height. */}
-            <CardNavbar />
+            {/* This sets the Portfolio view on load */}
+            <BelowHeroContent currentView={"WebApps"} />
+            <ContactContainer/>
           </Box>
-    
+            
+            
           {/* Footer fixed to the bottom */}
           <Box  bottom="0" transform={footerTranslateValue} width="107vw" zIndex="banner">
             <Footer />

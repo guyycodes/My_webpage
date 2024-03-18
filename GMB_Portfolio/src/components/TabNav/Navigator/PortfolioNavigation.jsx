@@ -1,10 +1,10 @@
 import { Box, Flex, Link, Text, Image, Button, Grid, GridItem } from "@chakra-ui/react";
 import React, { useEffect, useState, } from 'react';
 import { motion } from "framer-motion"
-import pointer from '../../../public/images/pointer.png';
+import pointer from '../../../../public/images/pointer.png';
 
 
-export const CardNavbar = ({ onMobileViewChange, viewChangeFromParent, onActiveLinkChange }) => {
+export const PortfolioNavigator = ({ onMobileViewChange, viewChangeFromParent, onActiveLinkChange }) => {
 // Set the initial state where the pointer starts
 const [activeLink, setActiveLink] = useState(viewChangeFromParent);
 const [screenSize, setScreenSize] = useState(window.innerWidth);
@@ -17,18 +17,18 @@ const pointerTopPosition = screenSize > 626 ? pointerTransform.large : pointerTr
 
 // Navigation items
 const navItems = [
-  { label: 'Schedule', id: 'Schedule' },
-  { label: 'Gallery', id: 'Gallery' },
-  { label: 'Specials', id: 'Specials' },
-  { label: 'Contact', id: 'Contact'},
-  { label: 'About', id: 'About'},
+  { label: 'WebApps', id: 'WebApps' },
+  { label: 'MobileApps', id: 'MobileApps' },
+  { label: 'Components', id: 'Components' },
+  { label: 'Cloud', id: 'Cloud'},
+  
 ];
 
 // dynamic values based on the screen width to adjust features
 const imgTransform = {
-  large: { Schedule: '3px', Gallery: '90px', Specials: '175px', Contact:'263px', About:'345px' },
-  medium: { Schedule: '0px', Gallery: '70px', Specials: '145px', Contact:'217px', About:'290px'  },
-  custom: { Schedule: '-3px', Gallery: '73px', Specials: '145px', Contact:'218px', About:'283px'  },   
+  large: { WebApps: '3px', MobileApps: '90px', Components: '175px', Cloud:'263px'},
+  medium: { WebApps: '0px', MobileApps: '70px', Components: '145px', Cloud:'217px' },
+  custom: { WebApps: '-3px', MobileApps: '73px', Components: '145px', Cloud:'218px' },   
 };
 
 // Responsive styles for Links and Separators
@@ -104,19 +104,27 @@ return (
   <Flex
     position="absolute"
     bottom={isMobileView ? '-100px' : '-40px'}
+    display='flex'
+    flexDirection='column'
     left={0}
     right={0}
+    transform='translateY(calc(-20vh))'
     bg='whitesmoke'
     borderRadius={8}
     margin="auto"
-    px={6}
-    py={6}
+    p={5}
     color='black'
     alignItems='center'
     justify='center'
-    width={{ base: '100%%', sm: '100%', md: '85%' }}
-    boxShadow="0 0 0 8px rgba(187, 189, 191, 0.5)"
+    width={{ base: '100%%', sm: '100%', md: '100%' }}
+    boxShadow="0 0 8px 12px rgba(187, 189, 191, 0.6)"
   >
+    <Box>
+      <Text fontSize="lg" 
+        fontWeight="bold">
+        Portfolio
+      </Text>
+    </Box>
     {/* Pointer outside of the conditional rendering */}
     <Text 
         fontSize="lg" 

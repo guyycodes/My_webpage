@@ -1,0 +1,128 @@
+[
+    {
+        "id": 1,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-a87d86ce14344aa4aa210034afdaa8d1.jpg",
+        "address": "123 Main Street",
+        "title": "Design Workshop",
+        "time": "10:00 AM - 12:00 PM",
+        "date": "July 20, 2023",
+        "description": "Join us for a hands-on design workshop covering the basics of UX/UI."
+    },
+    {
+        "id": 2,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-d41b40d49d8e41f99a85d1066044b086.jpg",
+        "address": "456 Elm Street",
+        "title": "Coding Bootcamp",
+        "time": "02:00 PM - 04:00 PM",
+        "date": "August 15, 2023",
+        "description": "A comprehensive coding bootcamp, perfect for beginners and intermediate coders."
+    },
+    {
+        "id": 3,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-ee262da682bd49d0b4833829b5acb2a8.jpg",
+        "address": "789 Oak Avenue",
+        "title": "Tech Networking Event",
+        "time": "06:00 PM - 09:00 PM",
+        "date": "September 10, 2023",
+        "description": "Meet and network with tech professionals from various industries."
+    },
+    {
+        "id": 4,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-7396b836623a45d5aa5aa902b32eee67.jpg",
+        "address": "1010 Willow Lane",
+        "title": "Art Exhibition",
+        "time": "01:00 PM - 04:00 PM",
+        "date": "October 05, 2023",
+        "description": "Explore the latest art from local artists at our quarterly exhibition."
+    },
+    {
+        "id": 5,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-d76cea3f0b9e4eeeb4cac656a918d810.jpg",
+        "address": "2020 Pine Street",
+        "title": "Local Farmers Market",
+        "time": "08:00 AM - 12:00 PM",
+        "date": "November 12, 2023",
+        "description": "Experience the community's best produce, crafts, and food at our farmers market."
+    },
+    {
+        "id": 6,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-16337e300f8b4d4591abf12971a1f9cd.jpg",
+        "address": "3030 Oak Avenue",
+        "title": "Yoga in the Park",
+        "time": "07:00 AM - 09:00 AM",
+        "date": "December 01, 2023",
+        "description": "Join us for a refreshing morning yoga session in the park. All skill levels welcome."
+    },
+    {
+        "id": 7,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-e6eaa4f69de7413bbb361ca72f318043.jpg",
+        "address": "4040 Birch Boulevard",
+        "title": "Live Music Night",
+        "time": "06:00 PM - 11:00 PM",
+        "date": "December 20, 2023",
+        "description": "Enjoy an evening of live music featuring local bands and solo artists."
+    },
+    {
+        "id": 8,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-f62f1431d5cb464296eb5dd4d08f92d2.jpg",
+        "address": "5050 Cedar Road",
+        "title": "Tech Talks Conference",
+        "time": "09:00 AM - 05:00 PM",
+        "date": "January 15, 2024",
+        "description": "A day of insightful talks and networking with leaders in the tech industry."
+    },
+    {
+        "id": 9,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-7dbbfffc2d204048a88886812ffaf9e9.jpg",
+        "address": "6060 Maple Drive",
+        "title": "Community Book Club",
+        "time": "05:00 PM - 06:30 PM",
+        "date": "February 10, 2024",
+        "description": "Join our monthly book club discussion. This month's book: 'Educated' by Tara Westover."
+    },
+    {
+        "id": 10,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-ee262da682bd49d0b4833829b5acb2a8.jpg",
+        "address": "789 Oak Avenue",
+        "title": "Techies",
+        "time": "06:00 PM - 09:00 PM",
+        "date": "September 10, 2023",
+        "description": "Meet and network with tech professionals from various industries."
+    },
+    {
+        "id": 12,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-ee262da682bd49d0b4833829b5acb2a8.jpg",
+        "address": "789 Oak Avenue",
+        "title": "Tech Test",
+        "time": "06:00 PM - 09:00 PM",
+        "date": "September 10, 2023",
+        "description": "Meet and network with tech professionals from various industries."
+    },
+    {
+        "id": 24,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-ee262da682bd49d0b4833829b5acb2a8.jpg",
+        "address": "789 Oak Avenue",
+        "title": "Tech Event",
+        "time": "06:00 PM - 09:00 PM",
+        "date": "September 10, 2023",
+        "description": "Meet and network with tech professionals from various industries."
+    },
+    {
+        "id": 25,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-ee262da682bd49d0b4833829b5acb2a8.jpg",
+        "address": "789 Oak Avenue",
+        "title": "Ten",
+        "time": "06:00 PM - 09:00 PM",
+        "date": "September 10, 2023",
+        "description": "Meet and network with tech professionals from various industries."
+    },
+    {
+        "id": 25,
+        "image": "https://u-static.fotor.com/images/text-to-image/result/PRO-ee262da682bd49d0b4833829b5acb2a8.jpg",
+        "address": "789 Oak Avenue",
+        "title": "Tenth",
+        "time": "06:00 PM - 09:00 PM",
+        "date": "September 10, 2023",
+        "description": "Meet and network with tech professionals from various industries."
+    }
+]

@@ -1,10 +1,34 @@
 import React from 'react';
 import { useColorMode, Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
+// import MatrixRain from '../../../public/matrixRain/matrixRain';
 
 export const CustomThemeSwitchButton = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
+  // we are trying to dynamically load a script that manipulates the DOM
+  const enterTheMatrix = (themeColor) => {
+    // Dynamically load the script
+    const script = document.createElement('script');
+    script.src = '../../../public/matrixRain/matrixRain'; // Adjust the path to your script
+    script.async = true;
+
+    script.onload = () => {
+      // Assuming your script defines a global function named `startMatrixEffect`
+      if (themeColor != 'dark' && window.startTheMatrix) {
+        window.startTheMatrix(true);
+      }else{
+        window.startTheMatrix(false);
+      }
+    };
+
+    document.body.appendChild(script);
+
+    // Optional: Remove the script tag once loaded to clean up
+    return () => {
+      document.body.removeChild(script);
+    };
+  };
   // Define your CSS here, using template literals to include dynamic parts if necessary
   const switchStyles = css`
     * {
@@ -228,17 +252,18 @@ export const CustomThemeSwitchButton = () => {
   `;
 
   return (
-    <Box css={switchStyles} background='transparent' alignContent='center'>
+    <Box css={switchStyles} background='transparent' alignContent='center' >
       <label className="switch">
       <input 
         className="switch__input" 
         type="checkbox" 
         role="switch" 
-        onChange={toggleColorMode} 
         checked={colorMode === 'dark'} 
+        onChange={() => {toggleColorMode(); enterTheMatrix(colorMode);}} 
+        
       />
-      {/* Embed your SVG directly here */}
-      <svg className="switch__scene" viewBox="0 0 48 24" width="48px" height="24px" aria-hidden="true">
+      {/* Embeded SVG */}
+      <svg className="switch__scene" viewBox="0 0 48 24" width="48px" height="24px" aria-hidden="true" style={{ zIndex: '2' }}>
       <symbol id="switch-cloud" viewBox="0 0 10 6">
         <path d="m7.5,1c-.238,0-.463.049-.675.125-.55-.681-1.381-1.125-2.325-1.125-1.13,0-2.103.633-2.614,1.556-.124-.033-.251-.056-.386-.056-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5c.134,0,.262-.023.386-.056.511.924,1.484,1.556,2.614,1.556.943,0,1.775-.444,2.325-1.125.212.076.437.125.675.125,1.105,0,2-.895,2-2s-.895-2-2-2Z"/>
       </symbol>
@@ -288,7 +313,7 @@ export const CustomThemeSwitchButton = () => {
           <use href="#switch-star" width="4px" height="4px" />
         </g>
       </g>
-      <g className="switch__handle" transform="translate(12,12)">
+      <g className="switch__handle" transform="translate(12,12)" >
         <g className="switch__handle-side">
           <circle r="10" fill="url(#switch-sun1)" />
           <circle r="6.5" fill="url(#switch-sun2)" />

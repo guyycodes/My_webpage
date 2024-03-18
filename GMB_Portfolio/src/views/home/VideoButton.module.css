@@ -1,7 +1,7 @@
 /*************** Managment of the background cloroed screen area on top of everything ****************/
 /* pushes the video to the center of the screen along the y-axis an sets a background behind it */
 body {
-  background:radial-gradient(circle,#8fbc8f 15%, black 100%) !important;
+  background:radial-gradient(circle,#00b894 15%, #2d3436 100%) !important;
   /* background-color: rgba(230, 19, 19, 0.5); manages the background color of the body */
   height: 85vh;
   font: 400 16px "Poppins", sans-serif;
@@ -17,7 +17,7 @@ body {
 .wrapper {
     /******* vars ******/
     --color: #1F242D;
-    --color-invert: #93f2ff;
+    --color-invert: #81ecec;
     --clip-path: circle(15px at left);
     --clip-path-hover: circle(70px at left);
     --clip-path-clicked: circle(300vh);

@@ -6,7 +6,7 @@ import { BelowHeroContent } from '../../components/TabNav/BelowHero.jsx'
 import { ContactContainer } from '../../components/Cards/CardContainers/contact.jsx';
 import { Footer } from '../../components/Footer/Footer';
 
-export const LandingUnderlay = ({ isCheckboxChecked, input }) => {
+export const LandingUnderlay = ({ input }) => {
 
     const [screenSize, setScreenSize] = useState(window.innerWidth);
     const [isChecked, setIsChecked] = useState(input);

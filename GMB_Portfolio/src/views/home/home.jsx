@@ -1,8 +1,7 @@
+import React, { useState, useEffect } from 'react';
 import { DotsCard } from '../../components/DotCard/dotCard.jsx';
 import { LandingUnderlay } from '../underlay/LandingUnderlay.jsx';
 import { Morph } from '../../components/TextMorph/textMorph.jsx';
-import React, { useState, useEffect } from 'react';
-//VideoButton.module.css. This change signifies that the styles in this file are a module and should be treated as such by the build tool
 import styles from './VideoButton.module.css';
 import { svgLarge } from '../../../public/SVG/svgLarge.jsx'
 import { svgSmall } from '../../../public/SVG/svgSmall.jsx';
@@ -20,8 +19,6 @@ export const VideoButton = () => {
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
     };
-
-    const responsiveFont = { base: "1.1rem", sm: ".9rem", md: "1.659rem", lg: "1.5rem", xl: "1.4rem", "2xl": "1.4rem" }
 
     useEffect(() => {
       const handleResize = () => {
@@ -87,7 +84,7 @@ export const VideoButton = () => {
               <Box className={styles.underlay}> 
               {/* Manages the content on the bottom of the screen */}
                 <Box className={styles.underlayContent}>
-                  {isChecked && <LandingUnderlay isCheckboxChecked={isChecked} input={isChecked} isMobileView={isMobileView} />}
+                  {isChecked && <LandingUnderlay isMobileView={isMobileView} />}
                 </Box>
               </Box>
             </Box>

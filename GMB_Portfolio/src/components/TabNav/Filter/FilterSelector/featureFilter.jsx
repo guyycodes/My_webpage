@@ -136,9 +136,10 @@ export const FeatureFilter = ({ cardData, secondaryNavSelection, CardContainerCo
                                 h="1.75rem" 
                                 size="sm" 
                                 onClick={handleSearch} 
-                                bg="transparent" 
+                                bg="#74b9ff" 
                                 _hover={{ bg: 'blue.100' }}
                                 border='.5px solid gray'
+                                p={0}
                             >
                                 🔎
                             </Button>

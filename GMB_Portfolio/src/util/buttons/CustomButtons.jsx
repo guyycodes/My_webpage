@@ -15,11 +15,11 @@ export const CustomButton = ({ onClick, children }) => {
       fontWeight="bold"
       textTransform="uppercase"
       letterSpacing="wide"
-      boxShadow="md"
       transition="all 0.2s"
+      boxShadow= '0 4px 6px rgba(0, 0, 0, 0.5)'
       _hover={{
           transform: 'scale(1.05)',
-          boxShadow: 'lg',
+          boxShadow: '0 8px 4px rgba(0, 0, 0, 0.5)',
       }}
     >
       {children}

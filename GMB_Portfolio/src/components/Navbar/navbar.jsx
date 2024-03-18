@@ -14,7 +14,7 @@ import { Box,
   Spacer,
   Drawer } from "@chakra-ui/react";
   import { HamburgerIcon, ChevronDownIcon } from '@chakra-ui/icons';
-import reactLogo from '../../../public/react.svg';
+import GuyMorganB from '../../../public/GuyMorganB.svg';
 import { CustomThemeSwitchButton } from "../../util/CustomeThemeSwitchButton/CustomThemeSwichButton.jsx";
 import { CustomButton } from '../../util/buttons/CustomButtons.jsx'
 
@@ -22,7 +22,7 @@ export const Navbar = () => {
   
   const [isOpen, setIsOpen] = useState(false);
   // controls the light dark mode coloras for the text
-  const buttonTextColor = useColorModeValue('yellow.500', 'yellow.200');
+  const buttonTextColor = useColorModeValue('#ffeaa7', '#ffeaa7');
 
   // Function to toggle the sidebar/drawer's open/close status
   const toggleDrawer = () => setIsOpen(!isOpen);
@@ -31,7 +31,10 @@ export const Navbar = () => {
   const onClose = () => setIsOpen(false);
 
   // Hook to get responsive text values based on the current viewport size
-  const themeSwitchButton = useBreakpointValue({ base: null, sm: <CustomThemeSwitchButton/> });
+  const themeSwitchButton = useBreakpointValue({ base: <CustomThemeSwitchButton /> });
+
+  let navGold = '#ffeaa7'
+  let navDark = '#2d3436'
 
   return (
     <Flex
@@ -41,7 +44,7 @@ export const Navbar = () => {
       position="relative"
       height="80px"
       p="1em"
-      bg="white"
+      bg={`linear-gradient(to right, ${navGold} 40%, ${navDark} 140%)`} // background of primary area
     >
       {/* Left side of the navbar */}
       <Box
@@ -50,19 +53,19 @@ export const Navbar = () => {
         top="0"
         bottom="0"
         right="50%"
-        borderBottom="2px solid yellow"
+        borderBottom={`2px solid ${navDark}`}
       />
   
       {/* Logo container */}
       <Box position="absolute" left="1em" transform="translateY(33%)" zIndex="2">
         <Box
           borderRadius="full"
-          border="2px solid yellow"
+          borderBottom={`2px solid ${navDark}`}
           display="flex"
           alignItems="center"
           justifyContent="center"
           ml="5vw"
-          bg="white"
+          bg={`${navGold}`}// background of area hanging below the image
           height="120px"
           width="120px"
           borderBottomRadius="full"
@@ -72,16 +75,19 @@ export const Navbar = () => {
             position: "absolute",
             width: "full",
             height: "50%",
-            bg: "white",
+            bg: `${navGold}`,  // background of the area behind the logo
             borderRadius: "50% 50% 0 0",
             transform: "translateY(-50%)",
             zIndex: "0",
           }}
         >
           <Image
-            src={reactLogo}
-            boxSize="120px"
-            p={2}
+            src={GuyMorganB}
+            sx={{
+              transform: 'rotate(-10deg)',
+            }}
+            boxSize="135px"
+            p={0}
             alt="Logo"
             position="absolute"
             bottom="0"
@@ -96,7 +102,8 @@ export const Navbar = () => {
         top="0"
         bottom="0"
         right="0"
-        borderBottom="2px solid yellow"
+        borderBottom={`2px solid ${navDark}`}
+
       />
   
       {/* Navbar items */}
@@ -109,8 +116,8 @@ export const Navbar = () => {
       >
         <IconButton
           display={{ base: "flex", md: "none" }}
-          icon={<HamburgerIcon />}
-          left={{ base: 47, md: 5 }}
+          icon={<HamburgerIcon boxSize={8}/>}
+          left={{ base: 55, md: 5 }}
           variant="ghost"
           aria-label="Toggle Navigation"
           onClick={toggleDrawer}
@@ -134,7 +141,8 @@ export const Navbar = () => {
               pr={4}
               mr={6}
               width="auto"
-              border="1px solid black"
+              border={`1px solid ${navDark}`}
+              boxShadow= '0 4px 6px rgba(0, 0, 0, 0.5)'
             >
               About Me
               <ChevronDownIcon />
@@ -162,6 +170,7 @@ export const Navbar = () => {
           <CustomButton
             children="My Blog"
             onClick={() => console.log("Button clicked")}
+            
           />
         </Flex>
       </Flex>

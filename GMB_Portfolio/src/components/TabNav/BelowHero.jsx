@@ -23,8 +23,7 @@ export const BelowHeroContent = ({ currentView, changeViewFromChild }) => {
   // this is the container for everything below the hero
   return (
     <Flex
-      direction="column" 
-      // position='relative'
+      direction="column" alignSelf={'center'}
       sx={{
         backgroundColor: 'rgba(255, 255, 255, 0.1)', // Semi-transparent white
         backdropFilter: 'blur(5px)', // Creates the frosted glass effect
